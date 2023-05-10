@@ -2,9 +2,7 @@ using namespace System.Net
 
 # Input bindings are passed in via param block.
 param($Request)
-Function Get-RunningVM {
-    get-Azvm -Status | Where-Object { $_.PowerState -eq "VM running" }
-}
+
 Function Get-RunningVmHTML {
     # HTML header for a nice look
     $Header = @"
@@ -17,7 +15,7 @@ TD {border-width: 1px; padding: 3px; border-style: solid; border-color: black; p
 "@
 
     # Get all running VMs
-    $RunningVMs = get-RunningVM
+    $RunningVMs = get-Azvm -Status | Where-Object { $_.PowerState -eq "VM running" }
     $runningVmsHTML = $RunningVMs | ConvertTo-Html -property "ResourceGroupName", "Name", "PowerState"
 
 
