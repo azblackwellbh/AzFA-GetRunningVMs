@@ -1,8 +1,8 @@
 name: DeployAzureFunction
 variables:
-  FunctionAppName: 'ffffat'
-  AzureConnection: 'MPN'
-  ResourcegGroupName: 'RG_ffffa'
+  FunctionAppName: 'BHBTestFA2-fa'
+  AzureConnection: 'BHBTesting'
+  ResourcegGroupName: 'B2CTesting-rg'
 
 trigger:
   branches:
