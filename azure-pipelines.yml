@@ -1,6 +1,6 @@
 name: DeployAzureFunction
 variables:
-  FunctionAppName: 'BHBTestFA2-fa'
+  FunctionAppName: 'bhbfatesting2'
   AzureConnection: 'BHBRMTesting'
   ResourcegGroupName: 'B2CTesting-rg'
 
