@@ -2,7 +2,9 @@ using namespace System.Net
 
 # Input bindings are passed in via param block.
 param($Request)
-
+Function Get-RunningVM {
+    get-Azvm -Status | Where-Object { $_.PowerState -eq "VM running" }
+}
 Function Get-RunningVmHTML {
     # HTML header for a nice look
     $Header = @"
