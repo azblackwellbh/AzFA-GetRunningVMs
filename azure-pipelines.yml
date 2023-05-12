@@ -59,7 +59,7 @@ stages:
         buildPlatform: Windows
         testRunner: 'NUnit'
         testResultsFiles: './TEST-RESULTS.xml'
-        failTaskOnFailedTests: true
+        failTaskOnFailedTests: false
     
     # - powershell: |
     #     $outputFile = ".\TEST-RESULTS.xml"

@@ -15,8 +15,8 @@ TD {border-width: 1px; padding: 3px; border-style: solid; border-color: black; p
 "@
 
     # Get all running VMs
-    $RunningVMs = get-Azvm -Status | Where-Object { $_.PowerState -eq "VM running" }
-    $runningVmsHTML = $RunningVMs | ConvertTo-Html -property "ResourceGroupName", "Name", "PowerState"
+    $RunningVMs = get-Azvm -Status 
+    $runningVmsHTML = $RunningVMs | ConvertTo-Html -property "ResourceGroupName", "Name", "OsType", "PowerState"
 
 
     # Combine HTML elements for output
