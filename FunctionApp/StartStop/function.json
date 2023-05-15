@@ -10,24 +10,6 @@
             ]
         },
         {
-            "authLevel": "function",
-            "type": "httpTrigger",
-            "direction": "in",
-            "name": "VMName",
-            "methods": [
-                "get"
-            ]
-        },
-        {
-            "authLevel": "function",
-            "type": "httpTrigger",
-            "direction": "in",
-            "name": "Operator",
-            "methods": [
-                "get"
-            ]
-        },
-        {
             "type": "http",
             "direction": "out",
             "name": "Response"

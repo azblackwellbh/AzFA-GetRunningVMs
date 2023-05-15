@@ -18,17 +18,6 @@ $data = @(
 $body = ConvertTo-Json -InputObject $data
 
 # Trigger the webhook
-try {
-    $response = invoke-webrequest -method Post -uri $uri -header $headerMessage -Body $body -UseBasicParsing 
-    }
-catch {
-    if ($_.ErrorDetails.Message) {
-        $errorObject = $_.ErrorDetails.Message | ConvertFrom-Json
-        foreach ($validationError in $errorObject.customProperties.ValidationResults) {
-            Write-Warning $validationError.message
-        }
-        Write-Error $errorObject.message
-    }
-    throw $_.Exception
-}
+invoke-webrequest -method Post -uri $uri -header $headerMessage -Body $body -UseBasicParsing 
+
 
