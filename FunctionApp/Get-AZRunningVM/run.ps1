@@ -16,13 +16,16 @@ TD {border-width: 1px; padding: 3px; border-style: solid; border-color: black; p
 </style>
 "@
 
-    # Get all running VMs
-    $RunningVMs = get-Azvm -Status | where-object { $_.PowerState -eq "VM Deallocated" }
-    $runningVmsHTML = $RunningVMs | ConvertTo-Html -property "ResourceGroupName", "Name", "OsType", "PowerState"
+    # Get all Deallocated VMs
+    $NotRunningVMs = get-Azvm -Status | where-object { $_.PowerState -eq "VM Deallocated" }
+    $NotRunningVmsHTML = $NotRunningVMs | ConvertTo-Html -property "ResourceGroupName", "Name", "OsType", "PowerState"
 
+    $RunningVMs = get-Azvm -Status | where-object { $_.PowerState -eq "VM Running" }
+    $RunningVmsHTML = $RunningVMs | ConvertTo-Html -property "ResourceGroupName", "Name", "OsType", "PowerState"
 
     # Combine HTML elements for output
-    $Header + "The Following VMs are still running <p>" + $runningVmsHTML
+    $Header + "The Following VMs are not running <p>" + $NotRunningVmsHTML
+    $Header + "The Following VMs are currently running <p>" + $RunningVmsHTML
 
 }
 $HTML = Get-RunningVmHTML
