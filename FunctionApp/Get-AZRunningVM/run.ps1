@@ -17,7 +17,7 @@ TD {border-width: 1px; padding: 3px; border-style: solid; border-color: black; p
 "@
 
     # Get all running VMs
-    $RunningVMs = get-Azvm -Status 
+    $RunningVMs = get-Azvm -Status | where-object { $_.PowerState -eq "VM Deallocated" }
     $runningVmsHTML = $RunningVMs | ConvertTo-Html -property "ResourceGroupName", "Name", "OsType", "PowerState"
 
 
