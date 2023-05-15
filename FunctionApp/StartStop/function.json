@@ -10,6 +10,16 @@
             ]
         },
         {
+            "name": "VMName",
+            "direction": "in",
+            "type": "authenticationEventsTrigger"
+        },
+        {
+            "name": "Operator",
+            "direction": "in",
+            "type": "authenticationEventsTrigger"
+        },
+        {
             "type": "http",
             "direction": "out",
             "name": "Response"
