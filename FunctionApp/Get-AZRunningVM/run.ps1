@@ -24,8 +24,7 @@ TD {border-width: 1px; padding: 3px; border-style: solid; border-color: black; p
     $RunningVmsHTML = $RunningVMs | ConvertTo-Html -property "ResourceGroupName", "Name", "OsType", "PowerState"
 
     # Combine HTML elements for output
-    $Header + "The Following VMs are not running <p>" + $NotRunningVmsHTML
-    $Header + "The Following VMs are currently running <p>" + $RunningVmsHTML
+    $Header + "The Following VMs are not running <p>" + $NotRunningVmsHTML + "The Following VMs are currently running <p>" + $RunningVmsHTML
 
 }
 $HTML = Get-RunningVmHTML
