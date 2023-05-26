@@ -18,10 +18,10 @@ TD {border-width: 1px; padding: 3px; border-style: solid; border-color: black; p
 
     # Get all Deallocated VMs
     $NotRunningVMs = get-Azvm -Status | where-object { $_.PowerState -eq "VM Deallocated" }
-    $NotRunningVmsHTML = $NotRunningVMs | ConvertTo-Html -property "ResourceGroupName", "Name", "OsType", "PowerState"
+    $NotRunningVmsHTML = $NotRunningVMs | ConvertTo-Html -property "Name", "OsType", "PowerState"
 
     $RunningVMs = get-Azvm -Status | where-object { $_.PowerState -eq "VM Running" }
-    $RunningVmsHTML = $RunningVMs | ConvertTo-Html -property "ResourceGroupName", "Name", "OsType", "PowerState"
+    $RunningVmsHTML = $RunningVMs | ConvertTo-Html -property "Name", "OsType", "PowerState"
 
     # Combine HTML elements for output
     $Header + "<b>ALL VM'S IN THIS SUBSCRIPTION AUTO SHUT DOWN AT 7 PM AND START UP AT 6 AM EST DAILY!</b> <p> The Following VMs are not running <p>" + $NotRunningVmsHTML + "<p> To request a VM be turned on, email the name of the VM in the subject line to <a href=`"mailto:support_afcent_cloud_dl@afcentcloud.mil?Subject=Please%20turn%20on%20VM%20`">Support</a>. <p>" + "The Following VMs are currently running <p>" + $RunningVmsHTML
@@ -34,6 +34,3 @@ Push-OutputBinding -Name Response -Value (@{
         ContentType = "text/html"
         Body        = $HTML
     })
-
-
-
